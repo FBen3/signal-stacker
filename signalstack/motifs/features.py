@@ -1,4 +1,3 @@
-# signalstack/motifs/features.py
 import numpy as np
 
 
