@@ -10,9 +10,9 @@ def run_pipeline(pipeline_list, initial_data=None, verbose=False):
     ----------
     pipeline_list : List[str]
         List of motif names as strings.
-    initial_data  : dict | None 
+    initial_data : dict | None 
         The input data dict to pass into the first motif.
-    verbose       : bool
+    verbose : bool
         If True, print progress at each stage.
 
     Returns
