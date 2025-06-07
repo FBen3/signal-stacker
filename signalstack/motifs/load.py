@@ -17,7 +17,7 @@ def load_csv(input_dict, path, fs=None):
 
     Returns
     -------
-        dict
+    dict
     """
     # read CSV into DataFrame
     df = pd.read_csv(path)

@@ -17,7 +17,7 @@ def run_pipeline(pipeline_list, initial_data=None, verbose=False):
 
     Returns
     -------
-        dict
+    dict
     """
     data = initial_data
 
