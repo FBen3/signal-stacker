@@ -11,21 +11,24 @@ What if you could just define a sequence of named blocks like: `raw_data → ban
 
 **Example usage**:
 
-`signalstack --pipeline "load:mock.csv | filter:bandpass:20-450 | feature:rms | classify:knn | plot"`
+`signalstack --pipeline "load:mock.csv | features:rms | classify:knn:1 | outputs:plot" --verbose`
 
 **Project structure**:
 
 ```
 signalstack/
 ├── motifs/
-│   ├── load.py
-│   ├── filters.py
+│   ├── classify.py
 │   ├── features.py
+│   ├── filters.py
+│   ├── load.py
 │   ├── models.py
 │   └── outputs.py
 ├── core/
 │   └── pipeline.py      # Chain logic: input → motifs → output
 ├── data/
 │   └── mock_eeg.csv
-└── main.py              # Entrypoint
+├── main.py              # Entrypoint
+├── uv.lock
+└── pyproject.toml
 ```
