@@ -59,7 +59,7 @@ def mean(data_dict, *args):
 
 
 def pass_through(data_dict, *args):
-    """
-    Pass the data_dict through unchanged (stub or debug purpose).
+    """Pass the data_dict through unchanged 
+    (stub or debug purpose).
     """
     return data_dict

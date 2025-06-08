@@ -1,7 +1,19 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "signal-stacker"
 version = "0.1.0"
-description = "Add your description here"
+description = "Modular, CLI-driven signal processing pipeline for biosignals"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = []
+dependencies = [
+    "importlib>=1.0.4",
+    "matplotlib>=3.10.3",
+    "numpy>=2.3.0",
+    "pandas>=2.3.0",
+]
+
+[project.scripts]
+signalstack = "signalstack.main:main"
