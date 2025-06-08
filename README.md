@@ -25,8 +25,6 @@ signalstack/
 │   └── outputs.py
 ├── core/
 │   └── pipeline.py      # Chain logic: input → motifs → output
-├── ui/
-│   └── cli.py
 ├── data/
 │   └── mock_eeg.csv
 └── main.py              # Entrypoint
