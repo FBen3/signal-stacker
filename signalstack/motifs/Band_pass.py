@@ -4,6 +4,9 @@
 
 
 from scipy.signal import butter, filtfilt
+from signalstack.motifs.load import signal
+from signalstack.motifs.plots import plot
+from signalstack.motifs.feature_rms import rms, mean, fftpeak
 
 
 # Defaults:
@@ -73,37 +76,50 @@ def bandpass(signal_dict, *args):
         raise ValueError("Invalid filter setup.")
 
     # --- Apply filter ---
-    filtered = filtfilt(b, a, data, axis=0)
+    filtered = filtfilt(b, a, data, axis=1) # changed axis from 0 to 1 for 2D data (multichannel)
+    # can add addtional argguments here maybe later 
     signal_dict["data"] = filtered
     signal_dict["meta"]["filtered"] = filter_desc
 
     return signal_dict
 
 
+# apply the bandpass filter to our file
+if __name__ == "__main__":
+    b_pass = bandpass(signal, "low= 0.5", "high= 50")
+    plot(b_pass, "signal")
+
+    # Ask user which feature to extract
+    print("Which feature do you want to extract? (rms, mean, fftpeak, all)")
+    feature = input("Enter your choice: ").strip().lower()
+
+    b_pass["features"] = {}
+    if feature == "rms":
+        b_pass = rms(b_pass)
+        print("RMS:", b_pass["features"]["rms"])
+    elif feature == "mean":
+        b_pass = mean(b_pass)
+        print("Mean:", b_pass["features"]["mean"])
+    elif feature == "fftpeak":
+        b_pass = fftpeak(b_pass)
+        print("FFT Peak:", b_pass["features"]["fft_peak"])
+    elif feature == "all":
+        b_pass = rms(b_pass)
+        b_pass = mean(b_pass)
+        b_pass = fftpeak(b_pass)
+        print("RMS:", b_pass["features"]["rms"])
+        print("Mean:", b_pass["features"]["mean"])
+        print("FFT Peak:", b_pass["features"]["fft_peak"])
+    else:
+        print("Unknown feature. Please choose from: rms, mean, fftpeak, all.")
+
+    # Optionally plot features if any were extracted
+    if feature in ("rms", "mean", "fftpeak", "all"):
+        plot(b_pass, "features")
 
 
 
 
 
-# def bandpass_filter(signal_dict, low_freq, high_freq):
-    
-    # data= signal_dict["data"]
-    # fs= signal_dict["fs"]
 
-    # # check if the data is a numpy array 
-    # if not isinstance(data, np.ndarray):
-    #     raise ValueError("Data must be a numpy array")
-    
-    # # check if the low and high frequencies are valid 
-    # if low_freq < 0 or high_freq > fs/2:
-    #     raise ValueError("Invalid frequency range")
-    
-    # # create the filter 
-    # nyquist_freq = 0.5 * fs 
-    # low = low_freq / nyquist_freq 
-    # high = high_freq / nyquist_freq 
 
-    # # apply the filter 
-    # filtered_data = butter_bandpass_filter(data, low, high, fs) 
-    
-    

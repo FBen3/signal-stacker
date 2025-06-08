@@ -14,32 +14,6 @@ import pyxdf
 
 # # ensure that they all retrun numpy array 
 # # bETTER to convert to numpy array rather than CSV format as it is more efficient and easier to process, cleaner code 
-# def load_data(filepath):
-#     ext = os.path.splitext(filepath)[1].lower()
-#     if ext == '.csv':
-#         df = pd.read_csv(filepath)
-#         return df.values  # convert to ndarray
-#     elif ext == '.edf':
-#         raw = mne.io.read_raw_edf(filepath, preload=True)
-#         return raw.get_data()  # returns ndarray
-#     elif ext == '.mat':
-#         mat = scipy.io.loadmat(filepath)
-#         return mat['data']  # ensure it's ndarray
-#     elif ext == '.npy':
-#         return np.load(filepath)
-#     elif ext == 'tsv':
-#         tsv = pd.read_csv(filepath, sep='\t')
-#         return tsv.values 
-#     elif ext == 'xdf': 
-#         xdf = pyxdf.load_xdf(filepath)
-#         return xdf[0]
-#     elif ext == 'fif':
-#         fif = mne.io.read_raw_fif(filepath, preload=True)
-#         return fif.get_data()
-#     else:
-#         raise ValueError(f\"Unsupported file format: {ext}\")
-
-
 
 
 
@@ -118,15 +92,16 @@ def load(filepath):
         raise ValueError(f"Unsupported file format: {ext}")
 
 
-# def bandpass_filter(signal_dict, )
 
-# def bandpass_filter(signal_dict, low_freq, high_freq):
-#     data= signal_dict["data"]
-#     fs= signal_dict["fs"]
-    
-#     ...
 
-#     return 
+path_data= "/Users/sude_umac/Downloads/Arithmetic_sub_1.csv"
+signal = load(path_data)
+print(signal)
+
+
+
+
+
 
 
 
