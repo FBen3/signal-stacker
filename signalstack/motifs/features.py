@@ -44,7 +44,8 @@ def mean(data_dict, *args):
     Returns
     -------
     dict
-        Data dict where 'data' is a 2D array of shape (1, C) containing mean values per channel.
+        Data dict where 'data' is a 2D array of shape (1, C) 
+        containing mean values per channel.
     """
     data = data_dict.get("data")
     mean_vals = np.mean(data, axis=0)

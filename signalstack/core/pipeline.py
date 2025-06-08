@@ -1,5 +1,10 @@
 import importlib
-from typing import List, Optional, Dict, Any
+from typing import (
+    List, 
+    Optional, 
+    Dict, 
+    Any
+)
 
 
 def run_pipeline(pipeline_list, initial_data=None, verbose=False):

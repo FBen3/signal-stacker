@@ -13,7 +13,8 @@ def load_csv(input_dict, path, fs=None):
     path : str 
         Path to the CSV file to load.
     fs : str | float, optional
-        Sampling rate. If provided as string, it will be converted to float. Defaults to 1000.0
+        Sampling rate. If provided as string, it will be 
+        converted to float. Defaults to 1000.0
 
     Returns
     -------
