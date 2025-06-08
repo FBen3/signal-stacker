@@ -71,7 +71,6 @@ def plot(data_dict, *args):
             bbox=dict(boxstyle="round,pad=0.5", fc="#ffdddd", ec="#aa0000", lw=2)
         )
 
-        fig.suptitle("Feature ↔ Classifier Demo", fontsize=16, y=1.02)
         fig.tight_layout()
         plt.show()
         return data_dict
