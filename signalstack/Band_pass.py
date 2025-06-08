@@ -5,6 +5,26 @@
 
 from scipy.signal import butter, filtfilt
 
+
+# Defaults:
+#   if no freqs are specified, it looks at the device type in metadata - common freq ranges fot these types of signals:
+#       for EMG: defaults to 20-450 HZ 
+#       for EEG: defaults to 0.5-50 Hz
+
+# Filter Creation:
+#   creates 3 types of filters:
+#       1- Bandpass (if both low and high are specified)
+#       2- Highpass (if only low is specified)
+#       3- Lowpass (if only high is specified)
+
+# Filter Application:
+#   applies the filter to the data using scipy.signal.filtfilt
+
+# IMPORTNAT: 
+#  the filter is applied along the first axis of the data (typically time)
+# SHOULD consider applying along other axes as well. (2D, 3D, etc.)
+
+
 def bandpass(signal_dict, *args):
     """
     Apply a bandpass, highpass, or lowpass filter depending on args.
